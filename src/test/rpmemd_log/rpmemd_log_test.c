@@ -38,6 +38,7 @@
 #include <sys/param.h>
 #include <syslog.h>
 
+#include "util.h"
 #include "unittest.h"
 #include "rpmemd_log.h"
 

@@ -34,6 +34,7 @@
  * mocks.c -- mocked functions used in util_poolset.c
  */
 
+#include "util.h"
 #include "unittest.h"
 
 extern const char *Open_path;

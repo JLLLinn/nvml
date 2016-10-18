@@ -37,8 +37,8 @@
 
 #include "obj.h"
 #include "sync.h"
-#include "unittest.h"
 #include "util.h"
+#include "unittest.h"
 
 #define MAX_THREAD_NUM 200
 
@@ -100,12 +100,7 @@ FUNC_MOCK_END
 static void
 mock_open_pool(PMEMobjpool *pop)
 {
-#ifdef _WIN32
-	__sync_fetch_and_add64(&pop->run_id, 2);
-#else
-	__sync_fetch_and_add(&pop->run_id, 2);
-#endif
-
+	util_fetch_and_add64(&pop->run_id, 2);
 }
 
 /*

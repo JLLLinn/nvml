@@ -37,6 +37,7 @@
 #include <elf.h>
 #include <link.h>
 
+#include "util.h"
 #include "unittest.h"
 #include "pool_hdr.h"
 #include "pmemcommon.h"

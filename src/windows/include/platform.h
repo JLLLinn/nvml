@@ -133,18 +133,6 @@ __sync_fetch_and_and(volatile uint64_t *a, uint64_t val)
 	return InterlockedAnd64((LONG64 *)a, (LONG64)val);
 }
 
-__inline uint32_t
-__sync_fetch_and_add(volatile uint32_t *a, uint32_t val)
-{
-	return InterlockedExchangeAdd(a, val);
-}
-
-__inline uint64_t
-__sync_fetch_and_add64(volatile uint64_t *a, uint64_t val)
-{
-	return InterlockedExchangeAdd64((LONG64 *)a, (LONG64)val);
-}
-
 __inline void
 __sync_synchronize()
 {

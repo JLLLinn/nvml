@@ -37,6 +37,7 @@
 
 #include "obj.h"
 #include "pmalloc.h"
+#include "util.h"
 #include "unittest.h"
 
 static struct {

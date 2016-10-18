@@ -36,6 +36,7 @@
 #include "memblock.h"
 #include "memops.h"
 #include "obj.h"
+#include "util.h"
 #include "unittest.h"
 #include "heap.h"
 

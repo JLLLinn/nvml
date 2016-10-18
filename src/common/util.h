@@ -142,6 +142,31 @@ __sync_bool_compare_and_swap64(volatile LONG64 *ptr,
 #endif
 
 /*
+ * util_fetch_and_add -- perform an atomic fetch and add
+ */
+#ifndef _MSC_VER
+#define util_fetch_and_add32 __sync_fetch_and_add
+#define util_fetch_and_add64 __sync_fetch_and_add
+#else
+static __inline LONG
+__sync_fetch_and_add32(volatile LONG *a, LONG val)
+{
+	return InterlockedExchangeAdd(a, val);
+}
+
+static __inline LONG64
+__sync_fetch_and_add64(volatile LONG64 *a, LONG64 val)
+{
+	return InterlockedExchangeAdd64(a, val);
+}
+
+#define util_fetch_and_add32(a, val)\
+	__sync_fetch_and_add32((LONG *)a, (LONG)val)
+#define util_fetch_and_add64(a, val)\
+	__sync_fetch_and_add64((LONG64 *)a, (LONG64)val)
+#endif
+
+/*
  * util_get_printable_ascii -- convert non-printable ascii to dot '.'
  */
 static inline char

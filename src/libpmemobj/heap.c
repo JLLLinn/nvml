@@ -763,7 +763,7 @@ heap_get_cache_bucket(struct heap_rt *heap, int bucket_id)
 	 * Sadly there are no thread exclusivity guarantees.
 	 */
 	while (Cache_idx == UINT32_MAX) {
-		Cache_idx = __sync_fetch_and_add(&Next_cache_idx, 1);
+		Cache_idx = util_fetch_and_add32(&Next_cache_idx, 1);
 	}
 
 	return heap->caches[Cache_idx % heap->ncaches].buckets[bucket_id];
@@ -915,7 +915,7 @@ heap_drain_to_auxiliary(struct palloc_heap *heap, struct bucket *auxb,
 
 	for (unsigned i = 0;
 			i < h->ncaches && total_drained < units_total; ++i) {
-		cache_id = __sync_fetch_and_add(&h->last_drained[b_id], 1)
+		cache_id = util_fetch_and_add32(&h->last_drained[b_id], 1)
 				% h->ncaches;
 
 		b = h->caches[cache_id].buckets[b_id];

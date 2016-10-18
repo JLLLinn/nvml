@@ -36,6 +36,7 @@
 #include "heap_layout.h"
 #include "memops.h"
 #include "unittest.h"
+#include "util.h"
 
 POBJ_LAYOUT_BEGIN(heap_interrupt);
 POBJ_LAYOUT_END(heap_interrupt);

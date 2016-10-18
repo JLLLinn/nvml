@@ -38,6 +38,7 @@
 #include "obj.h"
 #include "pmalloc.h"
 #include "unittest.h"
+#include "util.h"
 
 static struct {
 	int n_persist;

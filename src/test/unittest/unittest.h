@@ -645,7 +645,7 @@ int ut_pthread_join(const char *file, int line, const char *func,
 	static int RCOUNTER(name);\
 	ret_type __wrap_##name(__VA_ARGS__);\
 	ret_type __wrap_##name(__VA_ARGS__) {\
-		switch (__sync_fetch_and_add(&RCOUNTER(name), 1)) {
+		switch (util_fetch_and_add32(&RCOUNTER(name), 1)) {
 
 #define FUNC_MOCK_END\
 	}}
